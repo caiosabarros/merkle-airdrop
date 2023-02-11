@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/caiosa/Documents/GitHub/merkle/contracts/Token.sol": {
-      "lastModificationDate": 1675986818558,
-      "contentHash": "27650b0f1ed139a57ed6a5ace16e2da0",
+      "lastModificationDate": 1676064962480,
+      "contentHash": "f29c6d8900c843043da5f43877a08135",
       "sourceName": "contracts/Token.sol",
       "solcConfig": {
         "version": "0.8.17",

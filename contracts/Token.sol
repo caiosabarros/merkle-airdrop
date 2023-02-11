@@ -13,12 +13,12 @@ contract Token is ERC20 {
         root = _root;
     }
 
-    function airdrop(bytes32[] calldata _proof) external {
-        bool isEligible = MerkleProof.verify(_proof, root, keccak256(abi.encodePacked(msg.sender)));
+    function airdrop(bytes32[] calldata _proof, address _accountToSendTokensTo) external {
+        bool isEligible = MerkleProof.verify(_proof, root, keccak256(abi.encodePacked(_accountToSendTokensTo)));
         require(isEligible, "not eligible");
-        require(claimed[msg.sender] == false, "already claimed");
-        claimed[msg.sender] = true;
-        _mint(msg.sender, 1000 * 1e18);
+        require(claimed[_accountToSendTokensTo] == false, "already claimed");
+        claimed[_accountToSendTokensTo] = true;
+        _mint(_accountToSendTokensTo, 1000 * 1e18);
     }
 
 

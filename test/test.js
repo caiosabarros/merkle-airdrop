@@ -23,15 +23,29 @@ contract("Token", function (accounts) {
 	});
 
 	it("claims the airdrop to an eligible address", async function () {
-		const balan = await token.balanceOf(eligible[0]);
+		const balan = await token.balanceOf(eligible[1]);
 		console.log("initial", balan.toString());
-		const leaf = web3.utils.keccak256(eligible[0]);
+		const leaf = web3.utils.keccak256(eligible[1]);
 		const proof = tree.getHexProof(leaf);
 
-		await token.airdrop(proof, {from: eligible[0]});
-		const balance = await token.balanceOf(eligible[0]);
+		await token.airdrop(proof, eligible[1],{from: eligible[0]});
+		const balance = await token.balanceOf(eligible[1]);
 		console.log(balance.toString());
 		assert.equal(balance, web3.utils.toWei("1000"));
+	});
+
+	it("claims the airdrop to all eligible addresses", async function () {
+		for (let index = 0; index < eligible.length; index++) {
+			const balan = await token.balanceOf(eligible[index]);
+			console.log("initial", balan.toString());
+			const leaf = web3.utils.keccak256(eligible[index]);
+			const proof = tree.getHexProof(leaf);
+	
+			await token.airdrop(proof, eligible[index],{from: nonEligible[0]});
+			const balance = await token.balanceOf(eligible[index]);
+			console.log(balance.toString());
+			assert.equal(balance, web3.utils.toWei("1000"));
+		}
 	});
 
 	it("fails to claim the airdrop to a non-eligible address", async function () {
@@ -39,7 +53,7 @@ contract("Token", function (accounts) {
 		const proof = tree.getHexProof(leaf);
 
 		try {
-			await token.airdrop(proof, {from: nonEligible[0]});
+			await token.airdrop(proof, nonEligible[1], {from: nonEligible[0]});
 			assert.fail();
 		} catch (e) {
 			assert.equal(e.message, "VM Exception while processing transaction: reverted with reason string 'not eligible'");
@@ -47,13 +61,13 @@ contract("Token", function (accounts) {
 	});
 
 	it("cannot claim multiple times", async function () {
-		const leaf = web3.utils.keccak256(eligible[0]);
+		const leaf = web3.utils.keccak256(eligible[1]);
 		const proof = tree.getHexProof(leaf);
 
-		await token.airdrop(proof, {from: eligible[0]});
+		await token.airdrop(proof, eligible[1], {from: eligible[0]});
 
 		try {
-			await token.airdrop(proof, {from: eligible[0]});
+			await token.airdrop(proof, eligible[1], {from: eligible[0]});
 			assert.fail();
 		} catch (e) {
 			assert.equal(e.message, "VM Exception while processing transaction: reverted with reason string 'already claimed'");
