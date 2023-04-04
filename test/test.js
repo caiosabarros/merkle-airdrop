@@ -6,6 +6,7 @@ contract("Merkle", function (accounts) {
 	let deployer = accounts[0];
 	console.log(deployer, "deployer")	
 	let eligible = [...accountss]; // accounts indexes 0 to 9
+	let eligibleLength = eligible.length;
 	console.log(eligible, "second account")	
 	console.log("eligible", eligible[0]);
 	let nonEligible = accountss.slice(10, 19); // accounts indexes 10 to 19
@@ -32,9 +33,6 @@ contract("Merkle", function (accounts) {
 	});
 
 	it("claims the airdrop to an eligible address", async function () {
-		console.log(eligible[0], "second eligible");
-		console.log(eligible[1], "second eligible");
-		console.log(eligible[2], "second eligible");
 		const balan = await merkle.balanceOf(eligible[0], 1);
 		console.log("initial", balan.toString());
 		const leaf = web3.utils.keccak256(eligible[0]);
@@ -57,6 +55,8 @@ contract("Merkle", function (accounts) {
 			const balance = await merkle.balanceOf(eligible[index], 1);
 			console.log(balance.toString());
 			assert.equal(balance, 1);
+
+			console.log(`Airdrop done for ${index+1} out of ${eligibleLength} accounts`);
 		}
 	});
 
