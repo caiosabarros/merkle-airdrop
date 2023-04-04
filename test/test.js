@@ -60,7 +60,7 @@ contract("Merkle", function (accounts) {
 
 			console.log(`Airdrop done for ${index+1} out of ${eligibleLength} accounts`);
 
-			//If the airdrop finishes at x out of 171 accounts, modify
+			//If the airdrop finishes at x out of 166 accounts, modify
 			//line 48 to variable index start at x+1 and run the project again.
 		}
 	});
