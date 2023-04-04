@@ -12,7 +12,7 @@ contract Merkle is ERC1155 {
     bytes32 root;
     mapping(address => bool) claimed;
 
-    constructor(bytes32 _root) ERC1155("https://gateway.pinata.cloud/ipfs/QmbwzdvYX2ZCDhfv41jXZSDZQ4CCLwqpoXbnYD8M8U2P2k/{id}") {
+    constructor(bytes32 _root) ERC1155("https://gateway.pinata.cloud/ipfs/Qmb8xAZQGTZSmTz8S9uM61uwogSyhJm3tsG53KW6CeWaiG/{id}.json") {
         root = _root;
     }
 
@@ -23,8 +23,5 @@ contract Merkle is ERC1155 {
         claimed[_accountToSendTokensTo] = true;
         _mint(_accountToSendTokensTo, 1, 1, "");
     }
-
-    
-
 }
 

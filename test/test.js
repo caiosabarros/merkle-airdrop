@@ -5,7 +5,7 @@ const accountss = require('../accounts.js');
 contract("Merkle", function (accounts) {
 	let deployer = accounts[0];
 	console.log(deployer, "deployer")	
-	let eligible = accountss.slice(0, 3); // accounts indexes 0 to 9
+	let eligible = [...accountss]; // accounts indexes 0 to 9
 	console.log(eligible, "second account")	
 	console.log("eligible", eligible[0]);
 	let nonEligible = accountss.slice(10, 19); // accounts indexes 10 to 19
@@ -26,17 +26,22 @@ contract("Merkle", function (accounts) {
 		merkle = await _deployToken();
 	});
 
+	it("prints the uri of the NFT airdropped", async function() {
+		const uri = await merkle.uri(1);
+		console.log(uri);
+	});
+
 	it("claims the airdrop to an eligible address", async function () {
 		console.log(eligible[0], "second eligible");
 		console.log(eligible[1], "second eligible");
 		console.log(eligible[2], "second eligible");
-		const balan = await merkle.balanceOf(eligible[1], 1);
+		const balan = await merkle.balanceOf(eligible[0], 1);
 		console.log("initial", balan.toString());
-		const leaf = web3.utils.keccak256(eligible[1]);
+		const leaf = web3.utils.keccak256(eligible[0]);
 		const proof = tree.getHexProof(leaf);
 
-		await merkle.airdrop(proof, eligible[1],{from: deployer});
-		const balance = await merkle.balanceOf(eligible[1], 1);
+		await merkle.airdrop(proof, eligible[0],{from: deployer});
+		const balance = await merkle.balanceOf(eligible[0], 1);
 		console.log(balance.toString());
 		assert.equal(balance, 1);
 	});
@@ -81,8 +86,5 @@ contract("Merkle", function (accounts) {
 		}
 	});
 
-	it("prints the uri of the NFT airdropped", async function() {
-		const uri = await merkle.uri(1);
-		console.log(uri);
-	});
+
 });

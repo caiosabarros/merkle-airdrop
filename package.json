@@ -15,5 +15,8 @@
     "hardhat": "^2.12.7",
     "hardhat-gas-reporter": "^1.0.9",
     "merkletreejs": "^0.3.9"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
   }
 }
