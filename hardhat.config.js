@@ -22,7 +22,7 @@ module.exports = {
       accounts: [process.env.PRIV_KEY]
     },
     polygon: {
-      url: "",
+      url: process.env.MAINNET,
       accounts: [process.env.PRIV_KEY]
     }
   },
