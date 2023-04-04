@@ -2,14 +2,14 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/caiosa/UDocuments/Github/merkle-airdrop/contracts/Token.sol": {
-      "lastModificationDate": 1678149472565,
+      "lastModificationDate": 1680534470774,
       "contentHash": "f29c6d8900c843043da5f43877a08135",
       "sourceName": "contracts/Token.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -40,14 +40,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/utils/cryptography/MerkleProof.sol": {
-      "lastModificationDate": 1678149479330,
+      "lastModificationDate": 1680534471484,
       "contentHash": "a75542fc722f3c5c883583228040bbfe",
       "sourceName": "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -75,14 +75,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1678149479272,
+      "lastModificationDate": 1680534471474,
       "contentHash": "834a0dde221759af42b030253315b086",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -114,14 +114,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
-      "lastModificationDate": 1678149479284,
+      "lastModificationDate": 1680534471484,
       "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -151,14 +151,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1678149479273,
+      "lastModificationDate": 1680534471474,
       "contentHash": "ad7c2d0af148c8f9f097d65deeb4da6b",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -186,14 +186,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1678149479320,
+      "lastModificationDate": 1680534471484,
       "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -221,14 +221,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/contracts/Merkle.sol": {
-      "lastModificationDate": 1678150492071,
-      "contentHash": "a4ea721f4dc0f6d6c1fbfc3aa2bf4c97",
+      "lastModificationDate": 1680536379254,
+      "contentHash": "b2c9b21f824274222a030cf6d37f43db",
       "sourceName": "contracts/Merkle.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -260,14 +260,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/token/ERC1155/ERC1155.sol": {
-      "lastModificationDate": 1678149479260,
+      "lastModificationDate": 1680534471474,
       "contentHash": "447816f3d93d639006eb423c33d2ca2c",
       "sourceName": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -302,14 +302,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
-      "lastModificationDate": 1678149479337,
+      "lastModificationDate": 1680534471484,
       "contentHash": "0e7db055ce108f9da7bb6686a00287c0",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -339,14 +339,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/utils/Address.sol": {
-      "lastModificationDate": 1678149479315,
+      "lastModificationDate": 1680534471484,
       "contentHash": "f31ad6fc4bbf9c06203987220156a6ba",
       "sourceName": "@openzeppelin/contracts/utils/Address.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -374,14 +374,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol": {
-      "lastModificationDate": 1678149479262,
+      "lastModificationDate": 1680534471474,
       "contentHash": "9f8822b72fe2702979e40160cb6d9636",
       "sourceName": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -411,14 +411,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/token/ERC1155/IERC1155.sol": {
-      "lastModificationDate": 1678149479260,
+      "lastModificationDate": 1680534471474,
       "contentHash": "d5a8f6e07ca38ec384856cfe9f08a867",
       "sourceName": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -448,14 +448,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol": {
-      "lastModificationDate": 1678149479267,
+      "lastModificationDate": 1680534471474,
       "contentHash": "9148c2e10c4efb12c71a7f080da5559b",
       "sourceName": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {
@@ -485,14 +485,14 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
-      "lastModificationDate": 1678149479341,
+      "lastModificationDate": 1680534471484,
       "contentHash": "03e6768535ac4da0e9756f1d8a4a018a",
       "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
       "solcConfig": {
-        "version": "0.8.17",
+        "version": "0.8.4",
         "settings": {
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
           "outputSelection": {

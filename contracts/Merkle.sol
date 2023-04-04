@@ -7,10 +7,12 @@ import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
 contract Merkle is ERC1155 {
 	
+    string public name = "Wallbee Founder";
+
     bytes32 root;
     mapping(address => bool) claimed;
 
-    constructor(bytes32 _root) ERC1155("https://game.example/api/item/{id}.json") {
+    constructor(bytes32 _root) ERC1155("https://gateway.pinata.cloud/ipfs/QmbwzdvYX2ZCDhfv41jXZSDZQ4CCLwqpoXbnYD8M8U2P2k/{id}") {
         root = _root;
     }
 
