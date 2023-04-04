@@ -5,7 +5,7 @@
 
 # ENV Variables:
 
-There is the TESTNET, PRIV_KEY and MAINNET variables. To make the airdrop, you need to give the correct PRIV_KEY and MAINNET variables.
+There is the `TESTNET`, `PRIV_KEY` and `MAINNET` variables. To make the airdrop, you need to give the correct `PRIV_KEY` and `MAINNET`  variables.
 The PRIV_KEY corresponds to the account which will make the airdrop. (Official WallBee Wallet).
 
 The MAINNET variables follows the convention:
