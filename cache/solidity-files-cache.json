@@ -221,8 +221,8 @@
       ]
     },
     "/home/caiosa/UDocuments/Github/merkle-airdrop/contracts/Merkle.sol": {
-      "lastModificationDate": 1680569204530,
-      "contentHash": "12e568d7d84465faee64e7f371bd9bdb",
+      "lastModificationDate": 1680571217350,
+      "contentHash": "0b15088ab7a2d32d0bc275ee8babbc3c",
       "sourceName": "contracts/Merkle.sol",
       "solcConfig": {
         "version": "0.8.4",
