@@ -1,5 +1,7 @@
 require("hardhat-gas-reporter");
 require("@nomiclabs/hardhat-truffle5");
+require('dotenv').config();
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   defaultNetwork: "mumbai",
@@ -17,7 +19,7 @@ module.exports = {
     },
     mumbai: {
       url: "https://polygon-mumbai.g.alchemy.com/v2/LmSVvaZo03Kerk4tqmwsHHwp4IwPT6IW",
-      accounts: [env.process.PRIV_KEY]
+      accounts: [process.env.PRIV_KEY]
     }
   },
     mocha: {
