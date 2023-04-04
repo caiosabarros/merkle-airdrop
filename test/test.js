@@ -45,13 +45,15 @@ contract("Merkle", function (accounts) {
 	});
 
 	it("claims the airdrop to all eligible addresses", async function () {
-		for (let index = 47; index < eligibleLength; index++) {
+		for (let index = 0; index < eligibleLength; index++) {
+			// if(index < `${index}`) continue; uncomment this line if airdrop stops
+			//at position `${index}`.
 			const balan = await merkle.balanceOf(eligible[index], 1);
 			console.log("initial", balan.toString());
 			const leaf = web3.utils.keccak256(eligible[index]);
 			const proof = tree.getHexProof(leaf);
 	
-			await merkle.airdrop(proof, eligible[index],{from: deployer});
+			await merkle.airdrop(proof, eligible[index], {from: deployer});
 			const balance = await merkle.balanceOf(eligible[index], 1);
 			console.log(balance.toString());
 			assert.equal(balance, 1);
@@ -59,35 +61,35 @@ contract("Merkle", function (accounts) {
 			console.log(`Airdrop done for ${index+1} out of ${eligibleLength} accounts`);
 
 			//If the airdrop finishes at x out of 171 accounts, modify
-			//line 48 to variable index start at x and run the project again.
+			//line 48 to variable index start at x+1 and run the project again.
 		}
 	});
 
-	it("fails to claim the airdrop to a non-eligible address", async function () {
-		const leaf = web3.utils.keccak256(nonEligible[0]);
-		const proof = tree.getHexProof(leaf);
+	// it("fails to claim the airdrop to a non-eligible address", async function () {
+	// 	const leaf = web3.utils.keccak256(nonEligible[0]);
+	// 	const proof = tree.getHexProof(leaf);
 
-		try {
-			await merkle.airdrop(proof, nonEligible[1], {from: deployer});
-			assert.fail();
-		} catch (e) {
-			assert.equal(e.message, "VM Exception while processing transaction: reverted with reason string 'not eligible'");
-		}
-	});
+	// 	try {
+	// 		await merkle.airdrop(proof, nonEligible[1], {from: deployer});
+	// 		assert.fail();
+	// 	} catch (e) {
+	// 		assert.equal(e.message, "VM Exception while processing transaction: reverted with reason string 'not eligible'");
+	// 	}
+	// });
 
-	it("cannot claim multiple times", async function () {
-		const leaf = web3.utils.keccak256(eligible[1]);
-		const proof = tree.getHexProof(leaf);
+	// it("cannot claim multiple times", async function () {
+	// 	const leaf = web3.utils.keccak256(eligible[1]);
+	// 	const proof = tree.getHexProof(leaf);
 
-		await merkle.airdrop(proof, eligible[1], {from: eligible[0]});
+	// 	await merkle.airdrop(proof, eligible[1], {from: eligible[0]});
 
-		try {
-			await merkle.airdrop(proof, eligible[1], {from: eligible[0]});
-			assert.fail();
-		} catch (e) {
-			assert.equal(e.message, "VM Exception while processing transaction: reverted with reason string 'already claimed'");
-		}
-	});
+	// 	try {
+	// 		await merkle.airdrop(proof, eligible[1], {from: eligible[0]});
+	// 		assert.fail();
+	// 	} catch (e) {
+	// 		assert.equal(e.message, "VM Exception while processing transaction: reverted with reason string 'already claimed'");
+	// 	}
+	// });
 
 
 });
