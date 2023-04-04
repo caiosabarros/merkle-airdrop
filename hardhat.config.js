@@ -18,7 +18,11 @@ module.exports = {
     hardhat: {
     },
     mumbai: {
-      url: "https://polygon-mumbai.g.alchemy.com/v2/LmSVvaZo03Kerk4tqmwsHHwp4IwPT6IW",
+      url: process.env.TESTNET,
+      accounts: [process.env.PRIV_KEY]
+    },
+    polygon: {
+      url: "",
       accounts: [process.env.PRIV_KEY]
     }
   },

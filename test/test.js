@@ -45,7 +45,7 @@ contract("Merkle", function (accounts) {
 	});
 
 	it("claims the airdrop to all eligible addresses", async function () {
-		for (let index = 0; index < eligible.length; index++) {
+		for (let index = 0; index < eligibleLength; index++) {
 			const balan = await merkle.balanceOf(eligible[index], 1);
 			console.log("initial", balan.toString());
 			const leaf = web3.utils.keccak256(eligible[index]);
@@ -57,6 +57,9 @@ contract("Merkle", function (accounts) {
 			assert.equal(balance, 1);
 
 			console.log(`Airdrop done for ${index+1} out of ${eligibleLength} accounts`);
+
+			//If the airdrop finishes at x out of 171 accounts, modify
+			//line 48 to variable index start at x and run the project again.
 		}
 	});
 
