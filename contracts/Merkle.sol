@@ -19,7 +19,7 @@ contract Merkle is ERC1155 {
     function airdrop(bytes32[] calldata _proof, address _accountToSendTokensTo) external {
         bool isEligible = MerkleProof.verify(_proof, root, keccak256(abi.encodePacked(_accountToSendTokensTo)));
         require(isEligible, "not eligible");
-        require(claimed[_accountToSendTokensTo] == false, "already claimed");
+        // require(claimed[_accountToSendTokensTo] == false, "already claimed");
         claimed[_accountToSendTokensTo] = true;
         _mint(_accountToSendTokensTo, 1, 1, "");
     }

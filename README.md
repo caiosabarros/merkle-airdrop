@@ -16,3 +16,6 @@ To run the airdrop, run:
 
 Comments were added in the test.js file in case the airdrop stops at some time. Duplicates accounts were already removed, so everything should run smoothly.
 
+Do the airdrop in two parts:
+1. Mint 33 times for the WallBee Official Wallet Address. 
+2. Stop the process, comment the test: `claims the airdrop to WallBee address 33 times` and uncomment the test function: `claims the airdrop to all eligible addresses` and run the command `npx hardhat test --network polygon` again.
