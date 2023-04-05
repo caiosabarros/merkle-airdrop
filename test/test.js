@@ -1,70 +1,77 @@
 const { MerkleTree } = require('merkletreejs');
 const Merkle = artifacts.require("Merkle");
 const accountss = require('../accounts.js');
+const MerkleABI = require('../artifacts/contracts/Merkle.sol/Merkle.json').abi
+const Web3 = require('web3');
 
 contract("Merkle", function (accounts) {
+
+	const web3 = new Web3('https://polygon-mainnet.g.alchemy.com/v2/****');
 	let deployer = accounts[0];
 	console.log(deployer, "deployer")	
-	let eligible = [...accountss]; // accounts indexes 0 to 9
+	let eligible = accountss.slice(44);
 	let eligibleLength = eligible.length;
-	console.log(eligible, "second account")	
-	console.log("eligible", eligible[0]);
-	let nonEligible = accountss.slice(10, 19); // accounts indexes 10 to 19
-	console.log("non-eligible", nonEligible[0]);
-	let tree, merkle;
+	let tree, merkle, address;
 
 	_buildMerkleTree = () => {
 		const leaves = eligible.map(leaf => web3.utils.keccak256(leaf));
 		return new MerkleTree(leaves, web3.utils.keccak256, {sortPairs: true});
 	}
 
-	_deployToken = async () => {
-		return await Merkle.new(tree.getHexRoot());
+	_getDeployedToken = async () => {
+		address = "0x90f8DBdFE0447f84bF8C004e091513AC5D5273b3"
+		const contract = new web3.eth.Contract(MerkleABI, address);
+		return contract;
 	}
 
 	beforeEach(async () => {
 		tree = _buildMerkleTree();
-		merkle = await _deployToken();
+		console.log(tree, "tree");
+		merkle = await _getDeployedToken();
 	});
 
-	it("prints the uri of the NFT airdropped", async function() {
-		const uri = await merkle.uri(1);
-		console.log(uri);
+	it('calls uri function', async function() {
+		const uri = await merkle.methods.uri(1).call();
 	});
 
-	it("claims the airdrop to WallBee address 33 times", async function () {
-		for (let index = 0; index < 33; index++) {
-			// if(index < `${index}`) continue; uncomment this line if airdrop stops
-			//at position `${index}`.
-			const leaf = web3.utils.keccak256(eligible[0]);
+	it("claims the airdrop to all eligible addresses", async function () {
+		for (let index = 0; index < eligibleLength; index++) {
+			const balan = await merkle.methods.balanceOf(eligible[index], 1);
+			const leaf = web3.utils.keccak256(eligible[index]);
 			const proof = tree.getHexProof(leaf);
+			const account = web3.eth.accounts.privateKeyToAccount("****");
 	
-			await merkle.airdrop(proof, eligible[0], {from: deployer});
-			const balance = await merkle.balanceOf(eligible[index], 1);
-			console.log(balance.toString());
+			const merkleMethod = merkle.methods.airdrop(proof, eligible[index]);
+			const estimatedGas = await merkleMethod.estimateGas({ from: account.address });
+			const gasLimit = Math.min(estimatedGas * 2, 15000000);
+			console.log(estimatedGas, "estimated");
+			const gasPrice = await web3.eth.getGasPrice();
+			const nonce = await web3.eth.getTransactionCount(account.address);
 
-			console.log(`Airdrop done ${index+1} times out of 33 times`);
+
+			web3.eth.defaultAccount = account.address;
+
+			const txParams = {
+				from: account.address,
+				to: merkle.address,
+				gasPrice: gasPrice,
+				gasLimit: gasLimit,
+				nonce: nonce,
+				data: merkle.methods.airdrop(proof, eligible[index]).encodeABI()
+			  };
+
+			const signedTx = await account.signTransaction(txParams);
+			const txReceipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+
+			await merkle.methods.airdrop(proof, eligible[index]);
+			const balance = await merkle.methods.balanceOf(eligible[index], 1);
+			console.log(balance.toString());
+			assert.equal(balance, 1);
+
+			console.log(`Airdrop done for ${index+1} out of ${eligibleLength} accounts`);
+
+			//If the airdrop finishes at x out of 166 accounts, modify
+			//line 48 to variable index start at x+1 and run the project again.
 		}
 	});
-
-	// it("claims the airdrop to all eligible addresses", async function () {
-	// 	for (let index = 0; index < eligibleLength; index++) {
-	// 		// if(index < `${index}`) continue; uncomment this line if airdrop stops
-	// 		//at position `${index}`.
-	// 		const balan = await merkle.balanceOf(eligible[index], 1);
-	// 		console.log("initial", balan.toString());
-	// 		const leaf = web3.utils.keccak256(eligible[index]);
-	// 		const proof = tree.getHexProof(leaf);
-	
-	// 		await merkle.airdrop(proof, eligible[index], {from: deployer});
-	// 		const balance = await merkle.balanceOf(eligible[index], 1);
-	// 		console.log(balance.toString());
-	// 		assert.equal(balance, 1);
-
-	// 		console.log(`Airdrop done for ${index+1} out of ${eligibleLength} accounts`);
-
-	// 		//If the airdrop finishes at x out of 166 accounts, modify
-	// 		//line 48 to variable index start at x+1 and run the project again.
-	// 	}
-	// });
 });

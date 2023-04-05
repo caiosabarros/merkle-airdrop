@@ -18,12 +18,15 @@ module.exports = {
     hardhat: {
     },
     mumbai: {
-      url: process.env.TESTNET,
-      accounts: [process.env.PRIV_KEY]
+      url: "https://polygon-mumbai.g.alchemy.com/v2/*****",
+      accounts: ["/*****"]
     },
     polygon: {
-      url: process.env.MAINNET,
-      accounts: [process.env.PRIV_KEY]
+      url: "https://polygon-mainnet.g.alchemy.com/v2/407CFOkuZeDUWahye5xZLiU73r-E9abK",
+      accounts: ["/*****"],
+      gasPrice: 20000000000, // Increase the gas price
+      gas: 8000000, // Increase the gas limit
+      defaultAccount: 0
     }
   },
     mocha: {
